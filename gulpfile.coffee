@@ -40,7 +40,7 @@ makeCompileStream = (lang, path, opts)->
     .pipe $.sourcemaps.write()
 
     .pipe $$.dest "app/#{typeName}"
-    .pipe $.if '*.css', reload {stream: true}, reload()
+    .pipe $.if '*.css', reload({stream: true}), reload()
     .pipe $.size showFile: true, title: typeName
 
 $$.task 'del', del.bind null, ['dist/**/*']
